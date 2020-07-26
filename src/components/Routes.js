@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import NewBlogForm from './NewBlogForm';
 import Home from './Home';
 import BlogList from './BlogList';
+import Blog from './Blog';
 
 function Routes() {
   return (
@@ -17,6 +18,10 @@ function Routes() {
 
       <Route exact path='/blog'>
         <BlogList />
+      </Route>
+
+      <Route exact path='/:blogId'>
+        <Blog />
       </Route>
     </Switch>
   );

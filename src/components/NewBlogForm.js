@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addToBlog } from './actions';
+import { addToBlog } from '../actions/actions';
+import { v4 as uuid } from 'uuid';
+
+// Change form so it can be used for both editing & creating a new form
 
 function NewBlogForm() {
+  // change the int state
   const INT_STATE = { title: '', description: '', body: '' };
   const [f, setFData] = useState(INT_STATE);
   const history = useHistory();
@@ -16,7 +20,7 @@ function NewBlogForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addToBlog({ ...f }));
+    dispatch(addToBlog({ ...f, id: uuid() }));
     history.push('/blog');
   };
 
@@ -48,5 +52,7 @@ function NewBlogForm() {
     </div>
   );
 }
+
+NewBlogForm.defaultProps = { blog: { title: '', description: '', body: '' } };
 
 export default NewBlogForm;
