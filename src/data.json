@@ -1,0 +1,14 @@
+{
+  "blogs": {
+    "47314fa1-ae56-4eae-80be-af6691145951": {
+      "name": "tv",
+      "description": "A beautiful, big-screen TV. Because hey, Netflix isn't going to watch itself.",
+      "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam optio perspiciatis quia inventore aliquid voluptatum accusantium, laborum rerum magnam recusandae facere saepe unde mollitia nemo dolorem delectus vero, dolores quos?"
+    },
+    "3fdd689a-02cc-4ae7-903b-f6d2776ff3b9": {
+      "name": "microwave",
+      "description": "Heat your food with the power of SCIENCE!",
+      "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam optio perspiciatis quia inventore aliquid voluptatum accusantium, laborum rerum magnam recusandae facere saepe unde mollitia nemo dolorem delectus vero, dolores quos?"
+    }
+  }
+}
