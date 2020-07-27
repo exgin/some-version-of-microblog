@@ -1,7 +1,7 @@
 import data from '../data.json';
-import { ADD_TO_BLOG } from './actionTypes';
+import { ADD_TO_BLOG, ERROR, FETCH_ALL_BLOGS } from './actionTypes';
 
-const INT_STATE = { blogs: data.blogs };
+const INT_STATE = { blogs: data.blogs, error: false };
 
 function rootReducer(state = INT_STATE, action) {
   switch (action.type) {
@@ -10,6 +10,13 @@ function rootReducer(state = INT_STATE, action) {
       // add a new blog to allBlogs, with the existing blogs
       return { ...state, [action.blog.id]: { ...action.blog } };
     }
+
+    case FETCH_ALL_BLOGS: {
+      return { ...state, blogs: action.blogs };
+    }
+
+    case ERROR:
+      return { ...state, error: true };
 
     default:
       return state;

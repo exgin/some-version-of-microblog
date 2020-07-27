@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addToBlog } from '../actions/actions';
+import { addToBlog } from '../actions/actionCreators';
 import { v4 as uuid } from 'uuid';
-
-// Change form so it can be used for both editing & creating a new form
 
 function NewBlogForm() {
   // change the int state
