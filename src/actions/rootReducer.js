@@ -6,7 +6,7 @@ function rootReducer(state = INT_STATE, action) {
   switch (action.type) {
     case FETCH_TITLES:
       console.log(`rootReducer:`, action);
-      return { ...action.titles, error: false };
+      return { ...state, titles: [...action.titles], error: false };
 
     case ERROR:
       return { ...state, error: true };
