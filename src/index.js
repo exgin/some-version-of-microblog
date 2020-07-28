@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './actions/rootReducer';
+import rootReducer from './reducers/rootReducer';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 

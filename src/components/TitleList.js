@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchTitles } from '../actions/actionCreatorsTitle';
 import { Link } from 'react-router-dom';
 
-// MUI
+// Material UI Imports
 import { CircularProgress } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';

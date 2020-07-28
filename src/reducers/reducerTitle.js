@@ -1,8 +1,8 @@
-import { ERROR, FETCH_TITLES } from './actionTypes';
+import { ERROR, FETCH_TITLES } from '../actions/actionTypes';
 
 const INT_STATE = { titles: [], error: false };
 
-function rootReducer(state = INT_STATE, action) {
+function reducerTitle(state = INT_STATE, action) {
   switch (action.type) {
     case FETCH_TITLES:
       return { ...state, titles: [...action.titles], error: false };
@@ -15,4 +15,4 @@ function rootReducer(state = INT_STATE, action) {
   }
 }
 
-export default rootReducer;
+export default reducerTitle;
