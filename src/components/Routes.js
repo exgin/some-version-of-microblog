@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import NewBlogForm from './NewBlogForm';
 import Home from './Home';
-import BlogList from './BlogList';
 import Blog from './Blog';
+import TitleList from './TitleList';
 
 function Routes() {
   return (
@@ -17,7 +17,7 @@ function Routes() {
       </Route>
 
       <Route exact path='/blog'>
-        <BlogList />
+        <TitleList />
       </Route>
 
       <Route exact path='/:blogId'>
