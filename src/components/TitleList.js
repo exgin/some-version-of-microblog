@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTitles } from '../actions/actionCreatorsTitle';
+import { Link } from 'react-router-dom';
+
+// MUI
 import { CircularProgress } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import './TitleCard.css';
 
 function TitleList() {
   const { titles, error } = useSelector((st) => st);
@@ -25,11 +34,18 @@ function TitleList() {
 
   return (
     <div>
-      <h4>TitleList</h4>
+      <h4>Welcome to Microblog! This is all of the posts we have so far!</h4>
       {titles.map((t) => (
-        <div>
-          {t.title} | {t.id} | {t.description}
-        </div>
+        <Card key={t.id} className='TitleCard'>
+          <CardActions>
+            <Button size='small' color='primary'>
+              <Link to={'/' + t.id}>{t.title}</Link>
+            </Button>
+          </CardActions>
+          <CardActionArea>
+            <CardContent>{t.description}</CardContent>
+          </CardActionArea>
+        </Card>
       ))}
     </div>
   );

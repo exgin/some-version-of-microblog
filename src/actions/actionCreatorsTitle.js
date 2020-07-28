@@ -9,7 +9,6 @@ export function fetchTitles() {
   return async function (dispatch) {
     try {
       const { data } = await axios.get(`${BACKEND_URL}/api/posts`);
-      console.log(`actionCreatorTitle`, data);
       dispatch(getTitles(data));
     } catch (error) {
       console.log(error);
