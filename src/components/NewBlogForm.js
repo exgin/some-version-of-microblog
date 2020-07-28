@@ -51,6 +51,6 @@ function NewBlogForm() {
   );
 }
 
-NewBlogForm.defaultProps = { blog: { title: '', description: '', body: '' } };
+// NewBlogForm.defaultProps = { blog: { title: '', description: '', body: '' } };
 
 export default NewBlogForm;

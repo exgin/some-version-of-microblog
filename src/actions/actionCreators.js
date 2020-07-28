@@ -9,6 +9,7 @@ export function fetchAllBlogs() {
   return async function (dispatch) {
     try {
       const { data } = await axios.get(`${BACKEND_URL}/api/posts`);
+      console.log(data);
       dispatch(gotAllBlogs(data));
     } catch (error) {
       dispatch(gotError());

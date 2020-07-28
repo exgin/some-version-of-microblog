@@ -17,6 +17,7 @@ function BlogList() {
   return (
     <div>
       <h4>BlogList</h4>
+      <div></div>
     </div>
   );
 }

@@ -11,7 +11,10 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 // fix 'Actions must be objects' by importing the necessary pacakges
-const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
+const store = createStore(
+  rootReducer,
+  compose(applyMiddleware(thunk), window.navigator.userAgent.includes('Chrome') ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : compose)
+);
 
 ReactDOM.render(
   <Provider store={store}>
