@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 import './TitleCard.css';
 
 function TitleList() {
-  const { titles, error } = useSelector((st) => st);
+  const { titles, error } = useSelector((st) => st.reducerTitle);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
@@ -25,11 +25,11 @@ function TitleList() {
     if (isLoading) {
       getTitles();
     }
-  }, [dispatch]);
+  }, [dispatch, isLoading]);
   if (isLoading) return <CircularProgress />;
 
   if (error) {
-    return <h1>Oh no! Something went wrong.</h1>;
+    return <h1>Oh no! Something went wrong loading our blog lists.</h1>;
   }
 
   return (

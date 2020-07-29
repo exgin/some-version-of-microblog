@@ -7,7 +7,7 @@ export function fetchTitles() {
   return async function (dispatch) {
     try {
       const { data } = await axios.get(`${BACKEND_URL}/api/posts`);
-      dispatch(getTitles(data));
+      dispatch(gotTitles(data));
     } catch (error) {
       console.log(error);
       dispatch(gotError());
@@ -15,7 +15,7 @@ export function fetchTitles() {
   };
 }
 
-export function getTitles(titles) {
+export function gotTitles(titles) {
   return { type: FETCH_TITLES, titles };
 }
 

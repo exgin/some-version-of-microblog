@@ -11,10 +11,12 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 // fix 'Actions must be objects' by importing the necessary pacakges
-const store = createStore(
-  rootReducer,
-  compose(applyMiddleware(thunk), window.navigator.userAgent.includes('Chrome') ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : compose)
-);
+
+/* Error: You may not call store.getState() while the reducer is executing. ' + 'The reducer has already received the state as an argument. ' + 'Pass it down from the top reducer instead of reading it from the store.')
+ -Removed dev tools, still getting error on /:postId
+ */
+
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

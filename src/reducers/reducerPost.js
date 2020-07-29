@@ -5,7 +5,7 @@ const INT_STATE = { posts: {}, error: false };
 function reducerPost(state = INT_STATE, action) {
   switch (action.type) {
     case FETCH_POSTS:
-      return { ...state, posts: [action.post] };
+      return { ...state, posts: [action.post], error: false };
 
     case ERROR:
       return { ...state, error: true };
