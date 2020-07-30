@@ -15,7 +15,7 @@ function NavBar() {
           <Link to='/blog'>Blog</Link> | <Link to='/blog-new'>Add a new post</Link>
         </span>
       </div>
-      <hr />
+      <br />
     </div>
   );
 }

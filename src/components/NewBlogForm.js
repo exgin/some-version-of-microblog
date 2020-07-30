@@ -10,6 +10,8 @@ function NewBlogForm() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const addAndSavePost = () => {};
+
   const handleChange = (e) => {
     let { name, value } = e.target;
     setFData((f) => ({ ...f, [name]: value }));
@@ -17,12 +19,13 @@ function NewBlogForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // dispatch(addToBlog({ ...f, id: uuid() }));
     history.push('/blog');
   };
 
   return (
-    <div>
+    <div className='container'>
       <h4>New Post</h4>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>

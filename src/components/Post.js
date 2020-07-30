@@ -12,11 +12,9 @@ function Post() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
-  console.log(posts);
-
   useEffect(() => {
     async function getPost() {
-      await dispatch(fetchPost());
+      await dispatch(fetchPost(postId));
       setIsLoading(false);
     }
     if (isLoading) {
@@ -30,7 +28,23 @@ function Post() {
     return <h1>Oh no! Something went wrong loading a post.</h1>;
   }
 
-  return <div>{postId}</div>;
+  const blogPost = posts.map((p) => (
+    <div key={p.id} className='container'>
+      {console.log(p)}
+      <h4>{p.title}</h4>
+      <small>{p.description}</small>
+      <hr />
+      <p>{p.body}</p>
+      <h5>Comments</h5>
+      {p.comments.map((c) => (
+        <div key={c.id}>{c.text}</div>
+      ))}
+      <input placeholder='New Comment' />
+      <button>Add</button>
+    </div>
+  ));
+
+  return <div>{blogPost}</div>;
 }
 
 export default Post;
