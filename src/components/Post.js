@@ -12,6 +12,8 @@ function Post() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
+  console.log(useSelector((st) => st.reducerPost));
+
   useEffect(() => {
     async function getPost() {
       await dispatch(fetchPost(postId));
@@ -28,9 +30,9 @@ function Post() {
     return <h1>Oh no! Something went wrong loading a post.</h1>;
   }
 
+  console.log(posts);
   const blogPost = posts.map((p) => (
     <div key={p.id} className='container'>
-      {console.log(p)}
       <h4>{p.title}</h4>
       <small>{p.description}</small>
       <hr />

@@ -10,7 +10,9 @@ function NewBlogForm() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const addAndSavePost = () => {};
+  const addAndSavePost = ({title, description, body}) => {
+    dispatch()
+  };
 
   const handleChange = (e) => {
     let { name, value } = e.target;
