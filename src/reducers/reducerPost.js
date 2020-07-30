@@ -8,6 +8,7 @@ function reducerPost(state = INT_STATE, action) {
       return { ...state, posts: [action.post], error: false };
 
     case ADD_POST:
+      console.log(action);
       return state;
 
     case ERROR:

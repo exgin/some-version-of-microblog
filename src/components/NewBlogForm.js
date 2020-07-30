@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import { sendPost } from '../actions/actionCreatorsPost';
 
 function NewBlogForm() {
   // change the int state
@@ -10,8 +11,9 @@ function NewBlogForm() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const addAndSavePost = ({title, description, body}) => {
-    dispatch()
+  // send to api
+  const addAndSavePost = () => {
+    dispatch(sendPost(f.title, f.description, f.body));
   };
 
   const handleChange = (e) => {
@@ -21,8 +23,7 @@ function NewBlogForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // dispatch(addToBlog({ ...f, id: uuid() }));
+    addAndSavePost();
     history.push('/blog');
   };
 
