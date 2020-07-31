@@ -11,7 +11,7 @@ function NewBlogForm() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // send to api
+  // send/post to api
   const addAndSavePost = () => {
     dispatch(sendPost(f.title, f.description, f.body));
   };
