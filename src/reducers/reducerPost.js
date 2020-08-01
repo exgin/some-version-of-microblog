@@ -11,9 +11,11 @@ function reducerPost(state = INT_STATE, action) {
       return { ...state, posts: [...action.post] };
 
     case ADD_COMMENT:
-      // we get Oh no error! when posting to our comments, but when i refresh it's there
-      console.log('add', state.posts[0].comments);
-      return { ...state, posts: [...action.post, ...action.posts[0].comments] };
+      // we get Oh no error! when posting to our comments, but when i refresh it's there posts: {[all potsts]}
+      console.log('add', state.posts[0].comments, action.comment);
+      // we want to add to our | state.posts[0].comments: action.comment
+      //                       |  ^ all of my comments     ^ comment getting added
+      return { ...state, posts: [...action.post] };
 
     case REMOVE_COMMENT:
       // not completed
