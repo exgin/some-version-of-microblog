@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 function CommentForm({ addComment }) {
-  const INT_STATE = { input: '' };
-  const [f, setF] = useState(INT_STATE);
+  const [f, setF] = useState();
 
   const handleChange = (e) => {
     setF(e.target.value);
@@ -11,13 +10,13 @@ function CommentForm({ addComment }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addComment(f);
-    setF(INT_STATE);
+    setF('');
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} placeholder='New Commnent' value={f.input} />
+        <input onChange={handleChange} placeholder='New Commnent' name='f' value={f || ''} />
         <button>Add</button>
       </form>
     </div>

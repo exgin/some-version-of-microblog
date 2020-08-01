@@ -8,7 +8,7 @@ function Comment({ id, text, deleteComment }) {
   return (
     <div>
       <p>
-        {deleteComment && <i className='fa fa-times text-danger mr-2' onClick={handleDelete} />}
+        {<i className='fa fa-times text-danger mr-2' onClick={handleDelete} />}
 
         {text}
       </p>
