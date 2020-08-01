@@ -8,7 +8,7 @@ function Comment({ id, text, deleteComment }) {
   return (
     <div>
       <p>
-        {<i className='fa fa-times text-danger mr-2' onClick={handleDelete} />}
+        <button onClick={handleDelete}>x</button>
 
         {text}
       </p>

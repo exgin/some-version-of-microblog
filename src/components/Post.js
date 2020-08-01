@@ -10,10 +10,12 @@ import CommentList from './CommentList';
 
 function Post() {
   const { postId } = useParams();
-  const { posts, error } = useSelector((st) => st.reducerPost);
+  const post = useSelector((st) => st.reducerPost[postId]);
+  const { error } = useSelector((st) => st.reducerPost);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
+  // fetch our post from the API
   useEffect(() => {
     async function getPost() {
       await dispatch(fetchPost(postId));
@@ -22,12 +24,12 @@ function Post() {
     if (isLoading) {
       getPost();
     }
-  }, [dispatch, isLoading]);
+  }, [dispatch, isLoading, postId]);
 
-  // when loading, show loading circle
+  // if loading, show loading circle
   if (isLoading) return <CircularProgress />;
 
-  // if there's an error loading post, show error
+  // if there's an error, display text
   if (error) return <h1>Oh no! Something went wrong loading a post.</h1>;
 
   // pass down to our comment | adds to our backend
@@ -39,20 +41,23 @@ function Post() {
     dispatch(removeCommentFromAPI(postId, cId));
   };
 
-  const entirePost = posts.map((p) => (
-    <div key={p.id} className='container'>
-      <h4>{p.title}</h4>
-      <small>{p.description}</small>
-      <hr />
-      <p>{p.body}</p>
+  // const entirePost = post.map((p) => (
+  //   <div key={p.id} className='container'>
+  //     <h4>{p.title}</h4>
+  //     <small>{p.description}</small>
+  //     <hr />
+  //     <p>{p.body}</p>
 
-      {/* pass this section to it's own component */}
-      <CommentList comments={p.comments} deleteComment={deleteComment} />
+  //     {/* pass this section to it's own component */}
+  //   </div>
+  // ));
+
+  return (
+    <div>
+      <CommentList comments={post.comments} deleteComment={deleteComment} />
       <CommentForm addComment={addComment} />
     </div>
-  ));
-
-  return <div>{entirePost}</div>;
+  );
 }
 
 export default Post;

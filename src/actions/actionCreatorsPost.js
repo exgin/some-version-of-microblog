@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_POSTS, ADD_POST, ADD_COMMENT, REMOVE_COMMENT } from './actionTypes';
+import { FETCH_POST, ADD_POST, ADD_COMMENT, REMOVE_COMMENT } from './actionTypes';
 import { gotError } from './actionCreatorsTitle';
 
 const BACKEND_URL = process.env.BACKEND_URL || 'http://127.0.0.1:5000';
@@ -18,7 +18,7 @@ export function fetchPost(id) {
 }
 
 export function getPost(post) {
-  return { type: FETCH_POSTS, post };
+  return { type: FETCH_POST, post };
 }
 
 export function sendPost(title, description, body) {
