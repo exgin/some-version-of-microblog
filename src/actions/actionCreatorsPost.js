@@ -91,6 +91,7 @@ export function sendVoteToAPI(pId, direction) {
   return async function (dispatch) {
     try {
       const { data } = await axios.post(`${BACKEND_URL}/api/posts/${pId}/vote/${direction}`);
+      dispatch(vote(pId, data.votes));
     } catch (error) {
       console.log(error);
       dispatch(gotError());
