@@ -8,9 +8,10 @@ function Comment({ id, text, deleteComment }) {
   return (
     <div>
       <p>
-        <button onClick={handleDelete}>x</button>
-
-        {text}
+        {text}{' '}
+        <button className='btn btn-danger btn-sm' onClick={handleDelete}>
+          x
+        </button>
       </p>
     </div>
   );

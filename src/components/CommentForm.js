@@ -17,7 +17,7 @@ function CommentForm({ addComment }) {
     <div>
       <form onSubmit={handleSubmit}>
         <input onChange={handleChange} placeholder='New Commnent' name='f' value={f || ''} />
-        <button>Add</button>
+        <button className='btn btn-sm btn-secondary'>Add</button>
       </form>
     </div>
   );

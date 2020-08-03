@@ -2,13 +2,13 @@ import React from 'react';
 
 function PostDetails({ post }) {
   // destrcut from our post object
-  const { title, description, body } = post;
+  const { title, description, body, votes } = post;
 
   return (
-    <div>
+    <div className='container'>
       <h2>{title}</h2>
       <p>
-        <i>{description}</i>
+        <i>{description}</i> <span>{votes}</span>
       </p>
       <div>{body}</div>
     </div>
