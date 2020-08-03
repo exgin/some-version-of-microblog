@@ -9,7 +9,7 @@ function Comment({ id, text, deleteComment }) {
     <div>
       <p>
         {text}{' '}
-        <button className='btn btn-danger btn-sm' onClick={handleDelete}>
+        <button className='btn btn-outline-danger btn-sm' onClick={handleDelete}>
           x
         </button>
       </p>

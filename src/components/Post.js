@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPost, sendComment, removeCommentFromAPI } from '../actions/actionCreatorsPost';
+import { fetchPost, sendComment, removeCommentFromAPI, removePostFromAPI } from '../actions/actionCreatorsPost';
 import CommentForm from './CommentForm';
 import PostDetails from './PostDetails';
 
@@ -15,6 +15,7 @@ function Post() {
   const { error } = useSelector((st) => st.reducerPost);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // fetch our post from the API
   useEffect(() => {
@@ -38,13 +39,18 @@ function Post() {
     dispatch(sendComment(postId, text));
   };
 
+  const deletePost = () => {
+    dispatch(removePostFromAPI(postId));
+    history.push('/');
+  };
+
   const deleteComment = (cId) => {
     dispatch(removeCommentFromAPI(postId, cId));
   };
 
   return (
     <div>
-      <PostDetails post={post} />
+      <PostDetails post={post} deletePost={deletePost} />
 
       <CommentList comments={post.comments} deleteComment={deleteComment} />
       <CommentForm addComment={addComment} />

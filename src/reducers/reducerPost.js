@@ -1,4 +1,4 @@
-import { FETCH_POST, ERROR, ADD_POST, ADD_COMMENT, REMOVE_COMMENT } from '../actions/actionTypes';
+import { FETCH_POST, ERROR, ADD_POST, ADD_COMMENT, REMOVE_COMMENT, REMOVE_POST } from '../actions/actionTypes';
 
 function reducerPost(state = {}, action) {
   switch (action.type) {
@@ -9,6 +9,13 @@ function reducerPost(state = {}, action) {
     case ADD_POST:
       // ** { 1: id: 1, des: 'test' }
       return { ...state, [action.post.id]: { ...action.post, comments: [] } };
+
+    case REMOVE_POST:
+      console.log(`rmv post`, state);
+      let currentPosts = { ...state };
+      delete currentPosts[action.pId];
+
+      return currentPosts;
 
     case ADD_COMMENT:
       // FIX we now had our pId & text in our action from updating our actionCreato addComment()

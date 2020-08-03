@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PostDetails({ post }) {
+function PostDetails({ post, deletePost }) {
   // destrcut from our post object
   const { title, description, body, votes } = post;
 
@@ -11,6 +11,9 @@ function PostDetails({ post }) {
         <i>{description}</i> <span>{votes}</span>
       </p>
       <div>{body}</div>
+      <button className='btn btn-danger btn-sm' onClick={deletePost}>
+        Delete Post
+      </button>
     </div>
   );
 }
