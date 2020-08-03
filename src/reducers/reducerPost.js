@@ -1,4 +1,4 @@
-import { FETCH_POST, ERROR, ADD_POST, ADD_COMMENT, REMOVE_COMMENT, REMOVE_POST } from '../actions/actionTypes';
+import { FETCH_POST, ERROR, ADD_POST, ADD_COMMENT, REMOVE_COMMENT, REMOVE_POST, VOTE } from '../actions/actionTypes';
 
 function reducerPost(state = {}, action) {
   switch (action.type) {
@@ -11,7 +11,7 @@ function reducerPost(state = {}, action) {
       return { ...state, [action.post.id]: { ...action.post, comments: [] } };
 
     case REMOVE_POST:
-      console.log(`rmv post`, state);
+      // update Redux store when deleting, even though we can technically skip this step when we redirect to home when the request is set to backend
       let currentPosts = { ...state };
       delete currentPosts[action.pId];
 
@@ -26,6 +26,9 @@ function reducerPost(state = {}, action) {
 
     case REMOVE_COMMENT:
       return { ...state, [action.pId]: { ...state[action.pId], comments: state[action.pId].comments.filter((c) => c.id !== action.cId) } };
+
+    case VOTE:
+      return { ...state, [action.pId]: { ...state[action.pId], votes: action.votes } };
 
     case ERROR:
       return { ...state, error: true };

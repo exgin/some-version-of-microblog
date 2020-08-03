@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_POST, ADD_POST, ADD_COMMENT, REMOVE_COMMENT, REMOVE_POST } from './actionTypes';
+import { FETCH_POST, ADD_POST, ADD_COMMENT, REMOVE_COMMENT, REMOVE_POST, VOTE } from './actionTypes';
 import { gotError } from './actionCreatorsTitle';
 
 const BACKEND_URL = process.env.BACKEND_URL || 'http://127.0.0.1:5000';
@@ -85,4 +85,19 @@ export function removeCommentFromAPI(pId, cId) {
 
 export function removeComment(pId, cId) {
   return { type: REMOVE_COMMENT, pId, cId };
+}
+
+export function sendVoteToAPI(pId, direction) {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.post(`${BACKEND_URL}/api/posts/${pId}/vote/${direction}`);
+    } catch (error) {
+      console.log(error);
+      dispatch(gotError());
+    }
+  };
+}
+
+export function vote(pId, votes) {
+  return { type: VOTE, pId, votes };
 }

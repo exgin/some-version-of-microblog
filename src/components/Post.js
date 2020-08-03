@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPost, sendComment, removeCommentFromAPI, removePostFromAPI } from '../actions/actionCreatorsPost';
+import { fetchPost, sendComment, removeCommentFromAPI, removePostFromAPI, sendVoteToAPI } from '../actions/actionCreatorsPost';
 import CommentForm from './CommentForm';
 import PostDetails from './PostDetails';
 
@@ -34,7 +34,6 @@ function Post() {
   // if there's an error, display text
   if (error) return <h1>Oh no! Something went wrong loading a post.</h1>;
 
-  // pass down to our comment | adds to our backend
   const addComment = (text) => {
     dispatch(sendComment(postId, text));
   };
@@ -48,9 +47,13 @@ function Post() {
     dispatch(removeCommentFromAPI(postId, cId));
   };
 
+  const vote = (direction) => {
+    dispatch(sendVoteToAPI(postId, direction));
+  };
+
   return (
     <div>
-      <PostDetails post={post} deletePost={deletePost} />
+      <PostDetails post={post} deletePost={deletePost} vote={vote} />
 
       <CommentList comments={post.comments} deleteComment={deleteComment} />
       <CommentForm addComment={addComment} />
