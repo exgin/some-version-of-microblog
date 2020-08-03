@@ -3,22 +3,21 @@ import { FETCH_POST, ERROR, ADD_POST, ADD_COMMENT, REMOVE_COMMENT } from '../act
 function reducerPost(state = {}, action) {
   switch (action.type) {
     case FETCH_POST:
-      // { 1: id: 1, des: 'test' }
+      // ** { 1: id: 1, des: 'test' }
       return { ...state, [action.post.id]: action.post };
 
     case ADD_POST:
-      // { 1: id: 1, des: 'test' }
+      // ** { 1: id: 1, des: 'test' }
       return { ...state, [action.post.id]: { ...action.post, comments: [] } };
 
     case ADD_COMMENT:
-      // we get Oh no error! when posting to our comments, but when i refresh it's there posts: {[all potsts]}
-      console.log('add', state.posts[0].comments, action.comment);
-      // we want to add to our | state.posts[0].comments: action.comment
-      //                       |  ^ all of my comments     ^ comment getting added
-      return { ...state };
+      // FIX we now had our pId & text in our action from updating our actionCreato addComment()
+      // ** state[action.pId] is the key of the current post within the state, so we get our entire object back
+      //                                                                 | we want the previous comments (since everything has to be pure),
+      //                                                                 | & the current action.comment to be pushed into those comments state
+      return { ...state, [action.pId]: { ...state[action.pId], comments: [...state[action.pId].comments, action.comment] } };
 
     case REMOVE_COMMENT:
-      console.log(state[action.pId]);
       return { ...state, [action.pId]: { ...state[action.pId], comments: state[action.pId].comments.filter((c) => c.id !== action.cId) } };
 
     case ERROR:

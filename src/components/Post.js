@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPost, sendComment, removeCommentFromAPI } from '../actions/actionCreatorsPost';
 import CommentForm from './CommentForm';
+import PostDetails from './PostDetails';
 
 // Material UI Imports
 import { CircularProgress } from '@material-ui/core';
@@ -41,19 +42,10 @@ function Post() {
     dispatch(removeCommentFromAPI(postId, cId));
   };
 
-  // const entirePost = post.map((p) => (
-  //   <div key={p.id} className='container'>
-  //     <h4>{p.title}</h4>
-  //     <small>{p.description}</small>
-  //     <hr />
-  //     <p>{p.body}</p>
-
-  //     {/* pass this section to it's own component */}
-  //   </div>
-  // ));
-
   return (
     <div>
+      <PostDetails post={post} />
+
       <CommentList comments={post.comments} deleteComment={deleteComment} />
       <CommentForm addComment={addComment} />
     </div>

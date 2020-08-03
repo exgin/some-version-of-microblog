@@ -41,7 +41,8 @@ export function sendComment(id, text) {
   return async function (dispatch) {
     try {
       const { data } = await axios.post(`${BACKEND_URL}/api/posts/${id}/comments/`, { text });
-      dispatch(addComment(data));
+      // FIX add our postId to the addComment parameters ** look at route is returning & accepting | now we have access to the postId
+      dispatch(addComment(id, data));
     } catch (error) {
       console.log(error);
       dispatch(gotError());
@@ -49,8 +50,9 @@ export function sendComment(id, text) {
   };
 }
 
-export function addComment(comment) {
-  return { type: ADD_COMMENT, comment };
+// FIX adding comment not working | we need pId & comment to even update the API ** look at route
+export function addComment(pId, comment) {
+  return { type: ADD_COMMENT, pId, comment };
 }
 
 export function removeCommentFromAPI(pId, cId) {
