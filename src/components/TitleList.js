@@ -43,7 +43,10 @@ function TitleList() {
             </Button>
           </CardActions>
           <CardActionArea>
-            <CardContent>{t.description}</CardContent>
+            <CardContent>
+              {t.description} <br />
+              <small>votes: {t.votes}</small>
+            </CardContent>
           </CardActionArea>
         </Card>
       ))}
