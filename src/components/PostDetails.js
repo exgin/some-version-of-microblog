@@ -11,18 +11,23 @@ function PostDetails({ post, deletePost, vote }) {
       <h2>{title}</h2>
       <p>
         <i>{description}</i>{' '}
-        <small>
+        <p>
+          {' '}
           <span>
-            <b>votes: </b>
-            {votes}{' '}
+            <b>votes: </b> {votes}
           </span>
-          <button onClick={(e) => vote('up')}>^</button> <button onClick={(e) => vote('down')}>v</button>
-        </small>
+          <button className='btn btn-outline-primary' onClick={(e) => vote('up')}>
+            ^
+          </button>{' '}
+          <button className='btn btn-outline-danger' onClick={(e) => vote('down')}>
+            v
+          </button>
+        </p>
+        <button className='m-3 btn btn-danger btn-sm' onClick={deletePost}>
+          Delete Post
+        </button>
       </p>
       <div>{body}</div>
-      <button className='btn btn-danger btn-sm' onClick={deletePost}>
-        Delete Post
-      </button>
     </div>
   );
 }

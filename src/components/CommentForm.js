@@ -14,10 +14,12 @@ function CommentForm({ addComment }) {
   };
 
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} placeholder='New Commnent' name='f' value={f || ''} />
-        <button className='btn btn-sm btn-secondary'>Add</button>
+        <div className='form-group'>
+          <input className='form-control' onChange={handleChange} placeholder='New Commnent' name='f' value={f || ''} />
+          <button className='btn btn-sm btn-secondary'>Add</button>
+        </div>
       </form>
     </div>
   );
