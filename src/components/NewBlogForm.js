@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { v4 as uuid } from 'uuid';
 import { sendPost } from '../actions/actionCreatorsPost';
 
 function NewBlogForm() {
