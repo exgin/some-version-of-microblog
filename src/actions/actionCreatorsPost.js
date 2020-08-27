@@ -3,12 +3,12 @@ import axios from 'axios';
 import { FETCH_POST, ADD_POST, ADD_COMMENT, REMOVE_COMMENT, REMOVE_POST, VOTE } from './actionTypes';
 import { gotError } from './actionCreatorsTitle';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://127.0.0.1:5000';
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:5000';
 
 export function fetchPost(id) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${BACKEND_URL}/api/posts/${id}`);
+      const { data } = await axios.get(`${REACT_APP_BACKEND_URL}/api/posts/${id}`);
       dispatch(getPost(data));
     } catch (error) {
       console.log(error);
@@ -24,7 +24,7 @@ export function getPost(post) {
 export function sendPost(title, description, body) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(`${BACKEND_URL}/api/posts`, { title, description, body });
+      const { data } = await axios.post(`${REACT_APP_BACKEND_URL}/api/posts`, { title, description, body });
       dispatch(addPost(data));
     } catch (error) {
       console.log(error);
@@ -40,7 +40,7 @@ export function addPost(post) {
 export function removePostFromAPI(pId) {
   return async function (dispatch) {
     try {
-      await axios.delete(`${BACKEND_URL}/api/posts/${pId}`);
+      await axios.delete(`${REACT_APP_BACKEND_URL}/api/posts/${pId}`);
       dispatch(removePost(pId));
     } catch (error) {
       console.log(error);
@@ -56,7 +56,7 @@ export function removePost(pId) {
 export function sendComment(id, text) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(`${BACKEND_URL}/api/posts/${id}/comments/`, { text });
+      const { data } = await axios.post(`${REACT_APP_BACKEND_URL}/api/posts/${id}/comments/`, { text });
       // FIX add our postId to the addComment parameters ** look at route is returning & accepting | now we have access to the postId
       dispatch(addComment(id, data));
     } catch (error) {
@@ -74,7 +74,7 @@ export function addComment(pId, comment) {
 export function removeCommentFromAPI(pId, cId) {
   return async function (dispatch) {
     try {
-      await axios.delete(`${BACKEND_URL}/api/posts/${pId}/comments/${cId}`);
+      await axios.delete(`${REACT_APP_BACKEND_URL}/api/posts/${pId}/comments/${cId}`);
       dispatch(removeComment(pId, cId));
     } catch (error) {
       console.log(error);
@@ -90,7 +90,7 @@ export function removeComment(pId, cId) {
 export function sendVoteToAPI(pId, direction) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(`${BACKEND_URL}/api/posts/${pId}/vote/${direction}`);
+      const { data } = await axios.post(`${REACT_APP_BACKEND_URL}/api/posts/${pId}/vote/${direction}`);
       dispatch(vote(pId, data.votes));
     } catch (error) {
       console.log(error);
